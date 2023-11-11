@@ -45,7 +45,7 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v5
         with:
-          content: .
+          content: ${{ matrix.image_name }}
           dockerfile: Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/inventory-management-restocking:latest
