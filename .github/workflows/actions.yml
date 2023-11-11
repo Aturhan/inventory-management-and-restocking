@@ -11,7 +11,7 @@ jobs:
     name: Unit tests
     strategy:
       matrix:
-        image_name: [ "central-warehouse","warehouse1","warehouse2","discovery" ]
+        image_name: [ "central-warehouse-service","warehouse1-service","warehouse2-service","discovery-server" ]
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
@@ -26,7 +26,7 @@ jobs:
 
       - name: Build with maven
         working-directory: ${{ matrix.image_name }}
-        run: mvn -B package --file **/pom.xml
+        run: mvn -B package --file pom.xml
   docker:
     name: Build and deploy to docker hub
     runs-on: ubuntu-latest
