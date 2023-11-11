@@ -36,10 +36,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'corretto'
-          cache: 'maven'
       - name: Build with maven
         working-directory: ${{ matrix.image_name }}
-        run: mvn -B package --file pom.xml -DskipTests
+        run: mvn -B package --file ${{ matrix.image_name }}/pom.xml -DskipTests
       - name: Login docker hub
         uses: docker/login-action@v3
         with:
