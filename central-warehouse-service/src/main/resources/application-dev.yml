@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: central-warehouse-service
+  jackson.serialization.indent_output: true
+
+  # PostgreSQL
+  datasource:
+    url: jdbc:postgresql://postgres:5433/dev-central   # jdbc:postgresql://localhost:5433/dev-central
+    username: root         # root
+    password: root                      #  root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8083
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+kafka:
+  host: localhost:9092
+  topics:
+    threshold-topics:
+      topic1: thresholdValue_error_warehouse1
+      topic2: thresholdValue_error_warehouse2
+      consumerGroup: thresholdValue_error_warehouse_consumer

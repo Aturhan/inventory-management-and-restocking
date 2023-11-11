@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: warehouse1-service
+
+  # PostgreSQL
+  datasource:
+    url: jdbc:postgresql://postgres:5432/dev-warehouse1
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8081
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka
+
+kafka:
+  host: kafka:9092
+  topics:
+    user-created:
+      topicName: thresholdValue_error_warehouse1
+      partitionCount: 1
+      replicationFactor: 1

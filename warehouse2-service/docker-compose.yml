@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+
+  warehouse2-service:
+    build: .
+    ports:
+      - "9072:8082"
+    depends_on:
+      - postgres
+
+
+
+    # PostgreSQL Database Container
+  postgres:
+    image: postgres:latest
+    container_name: warehouse2-service
+    expose:
+      - "5434"
+    ports:
+      - "5434:5432"
+    command:
+      - -p 5434
+    restart: unless-stopped
+
+
