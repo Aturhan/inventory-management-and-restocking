@@ -7,16 +7,11 @@ on:
       - main
 
 jobs:
-  services:
-    strategy:
-      matrix:
-        image_name: ["central-warehouse","warehouse1","warehouse2","discovery"]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
   test:
     name: Unit tests
+    strategy:
+      matrix:
+        image_name: [ "central-warehouse","warehouse1","warehouse2","discovery" ]
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
